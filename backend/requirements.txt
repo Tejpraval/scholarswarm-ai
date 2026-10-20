@@ -1,0 +1,39 @@
+# ScholarSwarm AI — Backend Dependencies
+# Pin to stable, compatible versions
+
+# Web framework
+fastapi==0.111.1
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9
+
+# LangGraph / LangChain
+langgraph==0.2.14
+langchain-core==0.2.27
+
+# LLM Provider
+google-generativeai==0.7.2
+
+# Web Search
+tavily-python==0.3.3
+
+# PDF Extraction
+PyMuPDF==1.24.11
+
+# Data Validation
+pydantic==2.8.2
+pydantic-settings==2.3.4
+
+# HTTP client
+httpx==0.27.0
+
+# Environment
+python-dotenv==1.0.1
+
+# Async support
+anyio==4.4.0
+
+# Testing
+pytest==8.3.2
+pytest-asyncio==0.23.8
+pytest-mock==3.14.0
+httpx==0.27.0

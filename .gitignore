@@ -1,0 +1,80 @@
+# Environment variables — NEVER commit
+.env
+*.env
+backend/.env
+frontend/.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Local deployment tooling
+.vercel/
+.render/
+
+# Database
+*.db
+backend/*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+
+# Uploaded documents — contain student PII
+backend/uploads/
+uploads/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+venv/
+env/
+.venv/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Private/generated files and browser artifacts
+uploads/
+**/uploads/
+private/
+**/private/
+playwright-report/
+test-results/
+screenshots/
+**/screenshots/
+videos/
