@@ -23,7 +23,7 @@ router = APIRouter()
 
 # Upload directory — never exposed publicly
 UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR", "uploads"))
-UPLOAD_DIR.mkdir(exist_ok=True)
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB
 ALLOWED_CONTENT_TYPES = {"application/pdf"}
 

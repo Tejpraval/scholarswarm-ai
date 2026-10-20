@@ -40,7 +40,7 @@ async def lifespan(app: FastAPI):
 
     # Ensure upload directory exists
     upload_dir = Path(os.getenv("UPLOAD_DIR", "uploads"))
-    upload_dir.mkdir(exist_ok=True)
+    upload_dir.mkdir(parents=True, exist_ok=True)
 
     # Validate required env vars (warn, don't fail — allow demo mode)
     missing = []

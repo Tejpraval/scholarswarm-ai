@@ -11,14 +11,14 @@ The root `render.yaml` is a Blueprint for one Python web service. In Render, cre
 - Build command: `pip install -r requirements.txt`
 - Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 - Health check path: `/api/health`
-- Persistent disk: mount `/var/data`, 1 GB
-- `DB_PATH=/var/data/scholarswarm.db`
-- `UPLOAD_DIR=/var/data/uploads`
+- No persistent disk is required for the hackathon demo.
+- `DB_PATH=scholarswarm.db`
+- `UPLOAD_DIR=uploads`
 - `FRONTEND_URL`: add this in the Render Environment dashboard after the frontend is deployed; use the Vercel origin with no trailing slash
 - `GEMINI_API_KEY`, `TAVILY_API_KEY`: optional for Demo Mode; add replacement credentials in the Render Environment dashboard to enable Live Research
 - `GEMINI_MODEL`: optional; the service default is used when omitted
 
-The blueprint uses Render's `0.5c-512mb` web plan because the service needs a persistent disk. Only data written under `/var/data` survives deploys and restarts. Render disks are single-instance and prevent scaling to multiple instances; the application also keeps active SSE queues in process memory, so keep the API at one instance. Disk persistence is configured here but must be verified after a real deployment/restart before promising durable user data. Disk-backed deploys can briefly interrupt service.
+This no-disk configuration is suitable for the hackathon demo. SQLite data and uploaded PDFs are stored under the service working directory and can be lost on restart or redeploy. For durable data, attach a paid Render disk mounted at `/var/data` and change both paths back to `/var/data/scholarswarm.db` and `/var/data/uploads`. A disk is single-instance; the application also keeps active SSE queues in process memory, so keep the API at one instance. Render only preserves files under the mounted path, and disk-backed deploys can briefly interrupt service.
 
 After the first deploy, open `https://<render-service>.onrender.com/api/health` and confirm a 200 response before configuring Vercel. CORS will allow only local development origins until `FRONTEND_URL` is added.
 
