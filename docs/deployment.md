@@ -7,6 +7,7 @@ The repository is a monorepo: deploy the FastAPI API on Render and the Vite fron
 The root `render.yaml` is a Blueprint for one Python web service. In Render, create a **New + → Blueprint** from the GitHub repository and approve the `scholarswarm-ai-api` service. Its settings are:
 
 - Root directory: `backend`
+- Python version: `3.12.11` (set by `render.yaml` through `PYTHON_VERSION`; if configuring the service manually, add this exact environment variable)
 - Build command: `pip install -r requirements.txt`
 - Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 - Health check path: `/api/health`
